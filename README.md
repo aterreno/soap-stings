@@ -17,5 +17,3 @@ See core.clj to see what's available.
 Comes with on [WTFPL](http://www.wtfpl.net/) licence, it's just a spike and a sort of note on how to do some weird interop things with Java/SOAP services. All the stuff generated or that comes from riverbed / zeus is under their property/licencing. 
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY: if it kills your Zeus it's not my problem!
-
->>>>>>> init commit

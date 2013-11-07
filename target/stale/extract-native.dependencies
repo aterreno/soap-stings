@@ -1,0 +1,1 @@
+([:dependencies ([org.clojure/clojure "1.5.1"] [axis/axis "1.4"] [javax.mail/mail "1.4.7"] [stingray/stingray "1.2"] [cheshire/cheshire "5.2.0"] [org.clojure/tools.cli "0.2.4"])])

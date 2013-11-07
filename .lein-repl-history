@@ -1,0 +1,11 @@
+[
+    "wsdl/AFM.wsdl" "wsdl/AlertCallback.wsdl" "wsdl/Alerting.Action.wsdl" "wsdl/Alerting.EventType.wsdl" "wsdl/Catalog.Aptimizer.Profile.wsdl" "wsdl/Catalog.Authenticators.wsdl" "wsdl/Catalog.Bandwidth.wsdl"
+    "wsdl/Catalog.JavaExtension.wsdl" "wsdl/Catalog.Monitor.wsdl" "wsdl/Catalog.Persistence.wsdl" "wsdl/Catalog.Protection.wsdl" "wsdl/Catalog.Rate.wsdl" "wsdl/Catalog.Rule.wsdl" "wsdl/Catalog.SLM.wsdl"
+    "wsdl/Catalog.SSL.CertificateAuthorities.wsdl" "wsdl/Catalog.SSL.Certificates.wsdl" "wsdl/Catalog.SSL.ClientCertificates.wsdl" "wsdl/Catalog.SSL.DNSSEC.wsdl" "wsdl/Conf.Extra.wsdl" "wsdl/Conf.Extra_1_0.wsdl"
+    "wsdl/Diagnose.wsdl" "wsdl/Diagnose_1_0.wsdl" "wsdl/GLB.Service.wsdl" "wsdl/GlobalSettings.wsdl" "wsdl/Location.wsdl" "wsdl/Pool.wsdl" "wsdl/System.AccessLogs.wsdl" "wsdl/System.Backups.wsdl" "wsdl/System.Cache.wsdl"
+    "wsdl/System.Cache_1_0.wsdl" "wsdl/System.Cache_1_1.wsdl" "wsdl/System.CloudCredentials.wsdl" "wsdl/System.Connections.wsdl" "wsdl/System.LicenseKeys.wsdl" "wsdl/System.Log.wsdl" "wsdl/System.MachineInfo.wsdl"
+    "wsdl/System.Management.wsdl" "wsdl/System.RequestLogs.wsdl" "wsdl/System.Stats.wsdl" "wsdl/System.Steelhead.wsdl" "wsdl/TrafficIPGroups.wsdl" "wsdl/Users.wsdl" "wsdl/VirtualServer.wsdl"]
+exit
+(import custom.Config.MyProvider)
+(import custom.Config)
+exit

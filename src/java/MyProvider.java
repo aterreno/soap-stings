@@ -10,8 +10,8 @@ import java.security.Provider;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 
-public class Main {
-    public static class MyProvider extends Provider {
+public class MyProvider extends Provider {
+
         public MyProvider() {
             super( "MyProvider", 1.0, "Trust certificates" );
             put( "TrustManagerFactory.TrustAllCertificates", MyTrustManagerFactory.class.getName() );
@@ -31,4 +31,3 @@ public class Main {
             public X509Certificate[] getAcceptedIssuers() { return null; }
         }
     }
-}

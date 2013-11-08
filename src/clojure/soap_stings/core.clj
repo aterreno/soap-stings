@@ -7,7 +7,7 @@
            Main))
 
 (defn -init []
-  (Security/addProvider (Main$MyProvider.))
+  (Security/addProvider (Main.))
   (Security/setProperty "ssl.TrustManagerFactory.algorithm", "TrustAllCertificates"))
 
 (-init)

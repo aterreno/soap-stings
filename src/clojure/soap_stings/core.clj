@@ -1,5 +1,6 @@
 (ns soap-stings.core
   (:use [soap-stings.config])
+  (:require [cheshire.core :refer :all])
   (:import com.zeus.soap.zxtm._1_0.VirtualServerLocator
            com.zeus.soap.zxtm._1_0.PoolLocator
            com.zeus.soap.zxtm._1_0.SystemLogLocator
@@ -12,6 +13,14 @@
 
 (-init)
 
+(defn array? [x] (-> x class .isArray))
+
+(defn see [x]
+  (if (array? x) (map see x) x))
+
+(defn inspect [x]
+  (-> x see generate-string println))
+
 (defn list-virtual-servers
   "Lists virtual server names"
   []
@@ -19,7 +28,7 @@
               (.setVirtualServerPortEndpointAddress endpoint))
         vsp (.getVirtualServerPort l)
         vsnames (.getVirtualServerNames vsp)]
-    vsnames))
+    (see vsnames)))
 
 (defn list-pool-names
   "Lists pool names"
@@ -28,7 +37,7 @@
               (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-names (.getPoolNames pp)]
-    pool-names))
+    (see pool-names)))
 
 (defn list-draining-nodes
   "Lists draining nodes"
@@ -63,11 +72,12 @@
 (defn get-nodes
   "Gets the nodes from a pool. Usage: get-nodes pool"
   [pool]
+  (println pool)
   (let [l (doto (PoolLocator.)
               (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])]
-    (.getNodes pp pool-name)))
+    (see (.getNodes pp pool-name))))
 
 (defn remove-nodes
   "Removes nodes from a pool. Usage: remove-nodes pool [nodes]"

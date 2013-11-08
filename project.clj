@@ -8,10 +8,12 @@
                  [javax.mail/mail "1.4.7"]
                  [stingray/stingray "1.2"]
                  [cheshire "5.2.0"]
-                 [org.clojure/tools.cli "0.2.4"]]
+                 [ring/ring-json "0.2.0"]
+                 [compojure "1.1.6"]]
   :source-paths ["src" "src/clojure"]
-  :java-source-paths ["src/java"]  
-  :plugins [[lein-localrepo "0.5.2"]]  
+  :ring {:handler soap-stings.handler/app}
+  :java-source-paths ["src/java"]
+  :plugins [[lein-localrepo "0.5.2"]]
   :main soap-stings.main
   :wsimport { :wsdl-list [
     "wsdl/AFM.wsdl" "wsdl/AlertCallback.wsdl" "wsdl/Alerting.Action.wsdl" "wsdl/Alerting.EventType.wsdl" "wsdl/Catalog.Aptimizer.Profile.wsdl" "wsdl/Catalog.Authenticators.wsdl" "wsdl/Catalog.Bandwidth.wsdl"

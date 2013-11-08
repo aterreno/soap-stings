@@ -1,13 +1,16 @@
-(ns soap-stings.core)
-(import com.zeus.soap.zxtm._1_0.VirtualServerLocator)
-(import com.zeus.soap.zxtm._1_0.PoolLocator)
-(import com.zeus.soap.zxtm._1_0.SystemLogLocator)
+(ns soap-stings.core
+  (:use [soap-stings.config])
+  (:import com.zeus.soap.zxtm._1_0.VirtualServerLocator
+           com.zeus.soap.zxtm._1_0.PoolLocator
+           com.zeus.soap.zxtm._1_0.SystemLogLocator
+           Main))
 
 (defn list-virtual-servers
   "Lists virtual server names"
   []
+  (Main/main (into-array String []))
   (let [l (doto (VirtualServerLocator.)
-              (.setVirtualServerPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setVirtualServerPortEndpointAddress endpoint))
         vsp (.getVirtualServerPort l)
         vsnames (.getVirtualServerNames vsp)]
     vsnames))

@@ -33,4 +33,4 @@
       (drain-node (first params) (last params))
       (inspect (list-draining-node (first params))))
     (when (= "error-log" command)
-      (error-log))))
+      (println (error-log)))))

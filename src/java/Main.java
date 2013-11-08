@@ -11,12 +11,6 @@ import java.security.Security;
 import java.security.cert.X509Certificate;
 
 public class Main {
-
-    public static void main( String[] args ) {
-        Security.addProvider(new MyProvider());
-        Security.setProperty( "ssl.TrustManagerFactory.algorithm", "TrustAllCertificates");
-    }
-
     public static class MyProvider extends Provider {
         public MyProvider() {
             super( "MyProvider", 1.0, "Trust certificates" );

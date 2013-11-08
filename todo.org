@@ -1,0 +1,2 @@
+- improve interface
+- generally, I should be able to call dyn functions from diff. namespaces or not?

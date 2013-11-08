@@ -3,12 +3,18 @@
   (:import com.zeus.soap.zxtm._1_0.VirtualServerLocator
            com.zeus.soap.zxtm._1_0.PoolLocator
            com.zeus.soap.zxtm._1_0.SystemLogLocator
+           java.security.Security
            Main))
+
+(defn -init []
+  (Security/addProvider (Main$MyProvider.))
+  (Security/setProperty "ssl.TrustManagerFactory.algorithm", "TrustAllCertificates"))
+
+(-init)
 
 (defn list-virtual-servers
   "Lists virtual server names"
   []
-  (Main/main (into-array String []))
   (let [l (doto (VirtualServerLocator.)
               (.setVirtualServerPortEndpointAddress endpoint))
         vsp (.getVirtualServerPort l)
@@ -19,7 +25,7 @@
   "Lists pool names"
   []
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-names (.getPoolNames pp)]
     pool-names))
@@ -28,7 +34,7 @@
   "Lists draining nodes"
   [pool-names]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         draining-nodes (.getDrainingNodes pp pool-names)]
     draining-nodes))
@@ -42,7 +48,7 @@
   "Adds nodes to the pool. Usage: add-node pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -58,7 +64,7 @@
   "Gets the nodes from a pool. Usage: get-nodes pool"
   [pool]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])]
     (.getNodes pp pool-name)))
@@ -67,7 +73,7 @@
   "Removes nodes from a pool. Usage: remove-nodes pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -83,7 +89,7 @@
   "Drains nodes in a pool. Usage: drain-nodes pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -99,7 +105,7 @@
   "Prints the error log"
   []
   (let [l (doto (SystemLogLocator.)
-              (.setSystemLogPortEndpointAddress "http://docker:automate@and-hsk-zeusdev1.and.dmgt.net:9090/soap"))
+              (.setSystemLogPortEndpointAddress endpoint))
         slp (.getSystemLogPort l)
         error (.getErrorLogString slp)]
     error))

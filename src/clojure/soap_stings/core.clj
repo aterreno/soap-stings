@@ -4,10 +4,10 @@
            com.zeus.soap.zxtm._1_0.PoolLocator
            com.zeus.soap.zxtm._1_0.SystemLogLocator
            java.security.Security
-           Main))
+           MyProvider))
 
 (defn -init []
-  (Security/addProvider (Main.))
+  (Security/addProvider (MyProvider.))
   (Security/setProperty "ssl.TrustManagerFactory.algorithm", "TrustAllCertificates"))
 
 (-init)

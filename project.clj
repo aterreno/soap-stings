@@ -16,6 +16,7 @@
   :java-source-paths ["src/java"]
   :plugins [[lein-localrepo "0.5.2"]]
   :main soap-stings.main
+  :aot [soap-stings.main]
   :wsimport { :wsdl-list [
     "wsdl/AFM.wsdl" "wsdl/AlertCallback.wsdl" "wsdl/Alerting.Action.wsdl" "wsdl/Alerting.EventType.wsdl" "wsdl/Catalog.Aptimizer.Profile.wsdl" "wsdl/Catalog.Authenticators.wsdl" "wsdl/Catalog.Bandwidth.wsdl"
     "wsdl/Catalog.JavaExtension.wsdl" "wsdl/Catalog.Monitor.wsdl" "wsdl/Catalog.Persistence.wsdl" "wsdl/Catalog.Protection.wsdl" "wsdl/Catalog.Rate.wsdl" "wsdl/Catalog.Rule.wsdl" "wsdl/Catalog.SLM.wsdl"

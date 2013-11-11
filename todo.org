@@ -1,2 +1,5 @@
-- improve interface
-- generally, I should be able to call dyn functions from diff. namespaces or not?
+- api list on homepage? auto-gen?
+- config where? clearly in files it's not being good
+- more endpoint
+- what's the end goal? commandline/curl call from Docker ENV?
+- Docker file & possibly docker zeus

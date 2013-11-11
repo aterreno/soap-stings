@@ -1,25 +1,16 @@
 (ns soap-stings.core
-  (:use [soap-stings.config])
-  (:require [cheshire.core :refer :all])
+  (:use [soap-stings.config] [soap-stings.util] )
   (:import com.zeus.soap.zxtm._1_0.VirtualServerLocator
            com.zeus.soap.zxtm._1_0.PoolLocator
            com.zeus.soap.zxtm._1_0.SystemLogLocator
            java.security.Security
            MyProvider))
 
-(defn -init []
+(defn- init []
   (Security/addProvider (MyProvider.))
   (Security/setProperty "ssl.TrustManagerFactory.algorithm", "TrustAllCertificates"))
 
-(-init)
-
-(defn array? [x] (-> x class .isArray))
-
-(defn see [x]
-  (if (array? x) (map see x) x))
-
-(defn inspect [x]
-  (-> x see generate-string println))
+(init)
 
 (defn list-virtual-servers
   "Lists virtual server names"

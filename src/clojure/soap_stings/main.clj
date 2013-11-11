@@ -4,4 +4,4 @@
   (:use ring.adapter.jetty))
 
 (defn -main [& args]
-  (run-jetty handler/app {:port 8080}))
+  (run-jetty handler/app {:port 6174}))

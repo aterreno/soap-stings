@@ -6,9 +6,12 @@ soap-stings
 Uses [lein-localrepo](https://github.com/kumarshantanu/) to get stingray pre-compiled api into your local maven repo. 
 
 run:
-`lein localrepo coords ./obj/stingray-1.2.jar | xargs lein localrepo install`
+`soap-build.sh` to get the StingRay Soap API generated (the clojure app needs it!).
 
-to get the dependecies met
+run:
+`lein localrepo coords ./out/stingray-1.2.jar | xargs lein localrepo install`
+
+to get the dependecies met (if you haven't run before localrepo you'll have to run this command twice)
 
 See main.clj if you really dare using it on the command line
 

@@ -1,5 +1,6 @@
 nohup.out
 *.swp
+out
 zookeeper.out
 .config.clj
 *~

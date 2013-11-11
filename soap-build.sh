@@ -13,3 +13,4 @@ javac -d out -cp :lib/* ./out/com/zeus/soap/zxtm/*/*.java
 
 echo "Creating Jar"
 cd out && jar cf Stingray-API.jar com/zeus
+mv out/Stingray-API.jar out/stingray-1.2.jar

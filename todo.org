@@ -3,3 +3,4 @@
 - more endpoint
 - what's the end goal? commandline/curl call from Docker ENV?
 - Docker file & possibly docker zeus
+- handle 404 & errors

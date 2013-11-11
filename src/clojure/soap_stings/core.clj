@@ -12,7 +12,7 @@
 
 (init)
 
-(defn list-virtual-servers
+(defn virtual-servers
   "Lists virtual server names"
   []
   (let [l (doto (VirtualServerLocator.)
@@ -21,7 +21,7 @@
         vsnames (.getVirtualServerNames vsp)]
     (see vsnames)))
 
-(defn list-pool-names
+(defn pool-names
   "Lists pool names"
   []
   (let [l (doto (PoolLocator.)
@@ -30,7 +30,7 @@
         pool-names (.getPoolNames pp)]
     (see pool-names)))
 
-(defn list-draining-nodes
+(defn draining-nodes
   "Lists draining nodes"
   [pool-names]
   (let [l (doto (PoolLocator.)
@@ -39,16 +39,16 @@
         draining-nodes (.getDrainingNodes pp pool-names)]
     draining-nodes))
 
-(defn list-draining-node
+(defn draining
   "Lists draining nodes from single node"
   [pool-name]
-  (see (list-draining-nodes (into-array String [pool-name]))))
+  (see (draining-nodes (into-array String [pool-name]))))
 
 (defn add-nodes
   "Adds nodes to the pool. Usage: add-node pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -58,12 +58,11 @@
 (defn add-node
   "Adds a node to the pool. Usage: add-node pool node"
   [pool node]
-  (add-nodes pool [node]))
+  (add-nodes (str pool) [(str node)]))
 
 (defn get-nodes
   "Gets the nodes from a pool. Usage: get-nodes pool"
   [pool]
-  (println pool)
   (let [l (doto (PoolLocator.)
               (.setPoolPortEndpointAddress endpoint))
         pp (.getPoolPort l)

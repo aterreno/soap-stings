@@ -51,7 +51,7 @@
 (defn list-draining-node
   "Lists draining nodes from single node"
   [pool-name]
-  (list-draining-nodes (into-array String [pool-name])))
+  (see (list-draining-nodes (into-array String [pool-name]))))
 
 (defn add-nodes
   "Adds nodes to the pool. Usage: add-node pool [nodes]"

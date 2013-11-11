@@ -9,7 +9,8 @@
                  [stingray/stingray "1.2"]
                  [cheshire "5.2.0"]
                  [ring/ring-json "0.2.0"]
-                 [compojure "1.1.6"]]
+                 [compojure "1.1.6"]
+                 [ring/ring-jetty-adapter "0.3.7"]]
   :source-paths ["src" "src/clojure"]
   :ring {:handler soap-stings.handler/app}
   :java-source-paths ["src/java"]

@@ -1,8 +1,7 @@
-nohup.out
 *.swp
 out
 zookeeper.out
-.config.clj
+.config*.clj
 *~
 tmp
 /target
@@ -20,9 +19,7 @@ pom.xml.asc
 \#*\#
 .\#*
 .DS_Store
-/report.xml
 /.lein-env
 .nrepl-port
-*.log.zip
+config-*.json
 
-/todos.html

@@ -1,5 +1,6 @@
 (ns soap-stings.handler
   (:use [compojure.core]
+        [soap-stings.config]
         [soap-stings.core]
         [ring.util.codec :only [url-decode]])
   (:require [compojure.handler :as handler]

@@ -1,5 +1,5 @@
 (ns soap-stings.core
-  (:use [soap-stings.config] [soap-stings.util] )
+  (:use [soap-stings.util] [soap-stings.config] )
   (:import com.zeus.soap.zxtm._1_0.VirtualServerLocator
            com.zeus.soap.zxtm._1_0.PoolLocator
            com.zeus.soap.zxtm._1_0.SystemLogLocator
@@ -16,7 +16,7 @@
   "Lists virtual server names"
   []
   (let [l (doto (VirtualServerLocator.)
-              (.setVirtualServerPortEndpointAddress endpoint))
+            (.setVirtualServerPortEndpointAddress (:endpoint @settings)))
         vsp (.getVirtualServerPort l)
         vsnames (.getVirtualServerNames vsp)]
     (see vsnames)))
@@ -25,7 +25,7 @@
   "Lists pool names"
   []
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         pool-names (.getPoolNames pp)]
     (see pool-names)))
@@ -34,7 +34,7 @@
   "Lists draining nodes"
   [pool-names]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         draining-nodes (.getDrainingNodes pp pool-names)]
     draining-nodes))
@@ -48,7 +48,7 @@
   "Adds nodes to the pool. Usage: add-node pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-            (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -63,8 +63,9 @@
 (defn get-nodes
   "Gets the nodes from a pool. Usage: get-nodes pool"
   [pool]
+
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])]
     (see (.getNodes pp pool-name))))
@@ -73,7 +74,7 @@
   "Removes nodes from a pool. Usage: remove-nodes pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -89,7 +90,7 @@
   "Drains nodes in a pool. Usage: drain-nodes pool [nodes]"
   [pool nodes]
   (let [l (doto (PoolLocator.)
-              (.setPoolPortEndpointAddress endpoint))
+            (.setPoolPortEndpointAddress (:endpoint @settings)))
         pp (.getPoolPort l)
         pool-name (into-array String [pool])
         pool-nodes (into-array (map (partial into-array String) [nodes]))]
@@ -105,7 +106,7 @@
   "Prints the error log"
   []
   (let [l (doto (SystemLogLocator.)
-              (.setSystemLogPortEndpointAddress endpoint))
+            (.setSystemLogPortEndpointAddress (:endpoint @settings)))
         slp (.getSystemLogPort l)
         error (.getErrorLogString slp)]
     error))

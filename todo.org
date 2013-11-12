@@ -1,6 +1,10 @@
-- api list on homepage? auto-gen?
-- config where? clearly in files it's not being good
-- what's the end goal? commandline/curl call from Docker ENV?
-- Docker file & possibly docker zeus
-- handle 404 & errors
-- api to get the traffic script dump for a pool
+# TODO
+ - api list on homepage? auto-gen?
+ - handle 404 & errors
+ - api to get the traffic script dump for a pool
+ - resilience?
+ - Auth: https://github.com/cemerick/friend
+
+# Intersting stuff:
+ - AlertCallbackLocator AlertCallback is a callback interface that can be implemented on a separate server to receive events via SOAP from the traffic manager.
+ - SystemRequestLogsLocator The RequestLogs interfaces provide operations on saved virtual server request logs for a Stingray Appliance.

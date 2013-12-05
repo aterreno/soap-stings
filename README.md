@@ -24,3 +24,7 @@ Comes with a Dockerfile, build with `docker-build.sh` and run it with `docker-ru
 Comes with on [WTFPL](http://www.wtfpl.net/) licence, it's just a spike and a sort of note on how to do some weird interop things with Java/SOAP services. All the stuff generated or that comes from riverbed / zeus is under their property/licencing. 
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY: if it kills your Zeus it's not my problem!
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aterreno/soap-stings/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
